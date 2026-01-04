@@ -32,6 +32,18 @@ The tools in this repository require access to the DataForSEO API to perform key
     ```
 5.  Save the file. You are now ready to run the agents.
 
+## Recommended Configuration
+
+To ensure the best results when generating content with this repository, please adhere to the following model and mode preferences:
+
+### Model Preference
+*   **Gemini 3 Pro**: This is the **primary recommended model**. It has proven to be the most stable and produces high-quality output that consistently adheres to complex instructions.
+*   *Other models*: While other models are acceptable, Gemini 3 Pro handles the multi-step workflows in this repository most effectively.
+
+### Mode Preference
+*   **Agent (Default)**: We recommend using **Agent** mode for most tasks. It is fully capable of handling the autonomy required for research, planning, and writing.
+*   *Planning*: The **Planning** mode is also a valid alternative if you prefer a more structured, step-by-step oversight.
+
 ## How to Use (Slash Commands)
 
 To generate content, simply use one of the custom slash commands in the chat interface. Each command corresponds to a specific content type and triggers the `mobiloud_blog_writer` agent.
