@@ -6,8 +6,36 @@ A specialized repository for planning, researching, and producing high-quality, 
 
 The goal of this repository is to centralize the brand voice, messaging guidelines, and operational tools required to create content that sounds like MobiLoud. It bridges the gap between raw AI capabilities and the specific nuances of our brand, ensuring every piece of content remains consistent, accurate, and valuable to our audience of founders and ecommerce leaders.
 
+## How to Use (Slash Commands)
+
+To generate content, simply use one of the custom slash commands in the chat interface. Each command corresponds to a specific content type and triggers the `mobiloud_blog_writer` agent.
+
+### Available Commands
+
+| Command | Content Type | Description |
+| :--- | :--- | :--- |
+| `/blogpost` | Standard Blog Post | General-purpose technical or educational articles. |
+| `/comparison_general` | Comparison (X vs Y) | Compare two external competitors (e.g., "Shopney vs Tapcart"). |
+| `/comparison_mobiloud` | Comparison (MobiLoud vs X) | Compare MobiLoud against a competitor (e.g., "MobiLoud vs GoodBarber"). |
+| `/listicle` | Listicle | "Top X" lists (e.g., "7 Best Mobile App Builders"). |
+| `/use_case` | Use Case | Specialized articles focusing on specific business scenarios. |
+
+### Usage Format
+
+When running a command, please provide the following inputs:
+
+> **Cmd+K** (or Chat) -> `/command_name`
+>
+> **Title**: [Proposed Title]
+> **Word count**: [Target Word Count]
+> **Instructions**: [Any specific focus or requirements]
+
+**Example:**
+`/blogpost Title: "How to Reduce Churn" Word count: 1500 Instructions: "Focus on Shopify stores"`
+
 ## Repository Structure
 
+-   `.cursor/commands/`: **Slash Commands.** Custom commands to trigger specific content workflows (e.g., `/blogpost`, `/listicle`).
 -   `agents/`: **AI Instructions.** Contains the master prompt (`mobiloud_blog_writer.md`) that drives the AI content creation workflow.
 -   `context/`: **Brand Source of Truth.** Core documentation on MobiLoud's value props, voice, style, and messaging (e.g., `mobiloud_brand_bible.md`, `master_writing_guidelines.md`).
 -   `directories/`: **Link Indexes.** Canonical lists of internal links (blogs, integration pages, use cases) to ensure accurate cross-linking.
@@ -29,18 +57,16 @@ The goal of this repository is to centralize the brand voice, messaging guidelin
 
 ## Workflow
 
-This repository is designed for an **AI-first workflow**. The `agents/mobiloud_blog_writer.md` file contains a sophisticated prompt that drives the entire content creation process from end to end.
+This repository is designed for an **AI-first workflow**, driven by the slash commands listed above.
 
-### How to Use
-
-1.  **Provide Input**: Open your IDE or chat interface and instruct the AI (e.g., "Write a comparison article for MobiLoud vs Shopney").
-2.  **Autonomous Execution**: The agent will automatically:
-    -   **Research**: Run `tools/dataforseo_client.py` to generate a keyword brief and analyze competitors.
-    -   **Plan**: Select the correct **Playbook** (e.g., `playbooks/comparison_article_with_mobiloud.md`) and **Structure** (e.g., `structures/blogpost_structure.md`).
-    -   **Draft**: Write the full article using `context/` for voice/tone and `directories/` for internal links.
-    -   **Verify**: Self-correct using `tools/word_counter.py` and strict quality checklists.
-3.  **Review**: The agent stops only when it has a publication-ready Markdown file in the `outputs/` folder for you to review.
-4.  **Cleanup**: Temporary files are stored in `temp_files/` during the process and are purged upon completion. Strategic artifacts like SEO briefs are preserved.
+1.  **Trigger**: User initiates the process using a slash command (e.g., `/blogpost`).
+2.  **Autonomous Execution**: The `agents/mobiloud_blog_writer.md` agent executes the following pipeline:
+    -   **Research**: Runs `tools/dataforseo_client.py` to generate a keyword brief and analyze competitors.
+    -   **Plan**: Selects the correct **Playbook** and **Structure** based on the command used.
+    -   **Draft**: Writes the full article using `context/` for voice/tone and `directories/` for internal links.
+    -   **Verify**: Self-corrects using `tools/word_counter.py` and strictly follows the quality checklists.
+3.  **Review**: The agent stops only when it has a publication-ready Markdown file in the `outputs/` folder.
+4.  **Cleanup**: Interim files are purged; strategic artifacts (e.g., SEO briefs) are preserved.
 
 ### For Developers
 

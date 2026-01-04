@@ -35,9 +35,9 @@ Create factual, objective content that explains MobiLoud as a fully managed webs
 
 ### 3.4 Terminology constraints for describing the tech
 
-- **Strict Ban:** Do not use "wrapper," "container," "native container," "shell," or "hybrid" to describe the solution.
-- **Why:** These terms imply a low-quality, temporary, or "fake" app.
-- **Approved Phrasing:** "Converts your site into an app," "Runs your website as a native app," "Full-featured mobile app," "Native app experience."
+- **Strict Ban:** Do not use the words "wrapper," "container," "shell," or "hybrid" — **not even to explain what MobiLoud is "not".**
+- **Guideline:** Never attempt to clarify that MobiLoud "is not a wrapper." Mentioning the word invites the comparison. Ignore the concept entirely.
+- **Approved Phrasing:** Stick religiously to the **MobiLoud Brand Bible** definitions: "Website-to-app platform," "Fully managed service," "Premium third way."
 
 ### 3.5 Audience focus constraints (Strict)
 

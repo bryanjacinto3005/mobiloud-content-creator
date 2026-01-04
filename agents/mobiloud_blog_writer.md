@@ -93,6 +93,7 @@ Manually search Google for your main keyword:
    - Queries: "[topic] statistics 2025", "[topic] trends report", "benefits of [topic]".
 2. **Selection Criteria**:
    - Must be reputable (e.g., TechCrunch, Statista, trusted industry publications).
+   - **Strict Definition**: Reliable 3rd-party sites only. **MobiLoud links do NOT count** as external links.
    - **NO** competitors (other app builders, dev agencies).
 3. **Verification**: Use `read_url_content` to confirm the link is active and the content supports your point.
 4. **Plan**: Select 4 high-quality external links to use as citations for data points in the article.
@@ -129,6 +130,7 @@ Manually search Google for your main keyword:
 
 **Step 3.1: Create Outline**
 Draft a header-based outline (H2/H3) that aligns with your selected `structure` file. Ensure the narrative flows logically: Problem -> Why it Matters -> Solution -> MobiLoud Angle.
+- **Mandatory**: You must list the 4 specific External Links (from Step 1.3) within the outline under the sections where they will be used. Do not proceed without locking these in.
 - **Action**: Save this outline to `/temp_files/outline_[topic_slug].md`.
 
 **Step 3.2: Write the Content**
@@ -153,8 +155,8 @@ Now that the draft is written, identify the best opportunities for internal link
    - **Placement**: Insert them naturally into the flow of sentences.
    - **Constraint**: Max 1 internal link per section. **NEVER** use "Read more" or "Click here".
  
-### 3.4.2 Verify External Links
-Ensure the external links planned in Step 1.3 for data/stats are valid and properly anchored.
+### 3.4.2 Insert External Links
+Insert the external links that were explicitly added to your Outline in Step 3.1. Ensure they are anchored naturally to data points or definitions.
  
 ### 3.4.3 General Link Rules
 - **Anchor Text**: Do NOT use the exact article title or the URL slug as anchor text. Instead, hyperlink the relevant phrase, statistic, or concept to fit the sentence flow naturally.

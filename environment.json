@@ -1,5 +1,0 @@
-{
-  "install": "pip install requests python-dotenv",
-  "terminals": []
-}
-
