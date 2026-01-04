@@ -6,6 +6,32 @@ A specialized repository for planning, researching, and producing high-quality, 
 
 The goal of this repository is to centralize the brand voice, messaging guidelines, and operational tools required to create content that sounds like MobiLoud. It bridges the gap between raw AI capabilities and the specific nuances of our brand, ensuring every piece of content remains consistent, accurate, and valuable to our audience of founders and ecommerce leaders.
 
+## Setup Guide
+
+Before you can use the AI agents, you need to configure the local environment with the necessary API keys.
+
+### 1. Installation
+1.  **Download** the entire repository folder to your local machine.
+2.  **Open** the folder in **Cursor Desktop**.
+
+### 2. Configure Environment Secrets
+The tools in this repository require access to the DataForSEO API to perform keyword research.
+
+1.  Locate the `.env.example` file in the root directory.
+2.  **Duplicate** this file and rename the copy to `.env` (this file is git-ignored to protect your keys).
+3.  Open the new `.env` file. You will see fields for `DATAFORSEO_LOGIN` and `DATAFORSEO_PASSWORD`.
+
+### 3. Get DataForSEO Credentials
+1.  Log in to the [DataForSEO Dashboard](https://app.dataforseo.com/dashboard).
+2.  Navigate to the API Dashboard or API Credentials section.
+3.  Copy your **API Login** and **API Password**.
+4.  Paste them into your `.env` file:
+    ```bash
+    DATAFORSEO_LOGIN=your_login_here
+    DATAFORSEO_PASSWORD=your_password_here
+    ```
+5.  Save the file. You are now ready to run the agents.
+
 ## How to Use (Slash Commands)
 
 To generate content, simply use one of the custom slash commands in the chat interface. Each command corresponds to a specific content type and triggers the `mobiloud_blog_writer` agent.
