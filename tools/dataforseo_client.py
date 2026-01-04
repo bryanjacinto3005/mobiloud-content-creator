@@ -136,7 +136,7 @@ def get_keyword_suggestions(seed_keyword: str,
         cache_key = _get_cache_key(endpoint, task)
         cached_result = _get_from_cache(cache_key)
         if cached_result:
-            print(f"  ✓ Using cached results for '{seed_keyword}'")
+            print(f"  [OK] Using cached results for '{seed_keyword}'")
             return cached_result
     
     # Make API request
@@ -144,32 +144,32 @@ def get_keyword_suggestions(seed_keyword: str,
     
     # Check for errors
     if response.get("status_code") != 20000:
-        print(f"❌ API Error: {response.get('status_message', 'Unknown error')}")
+        print(f"[ERROR] API Error: {response.get('status_message', 'Unknown error')}")
         return []
     
     # Extract items from response
     try:
         if "tasks" not in response or not response["tasks"]:
-            print(f"❌ No tasks in response")
+            print(f"[ERROR] No tasks in response")
             return []
             
         task_result = response["tasks"][0]
         if task_result.get("status_code") != 20000:
-            print(f"❌ Task error: {task_result.get('status_message', 'Unknown error')}")
+            print(f"[ERROR] Task error: {task_result.get('status_message', 'Unknown error')}")
             return []
         
         if "result" not in task_result or not task_result["result"]:
-            print(f"❌ No result in task")
+            print(f"[ERROR] No result in task")
             return []
             
         items = task_result["result"][0].get("items", [])
         
         if not items:
-            print(f"  ⚠️  No keyword suggestions found - topic may have zero search volume")
+            print(f"  [WARNING]  No keyword suggestions found - topic may have zero search volume")
             return []
             
     except (IndexError, KeyError) as e:
-        print(f"❌ Error parsing response: {e}")
+        print(f"[ERROR] Error parsing response: {e}")
         print(f"Response structure: {json.dumps(response, indent=2)[:500]}")
         return []
     
@@ -249,7 +249,7 @@ def get_related_keywords(seed_keyword: str,
         cache_key = _get_cache_key(endpoint, task)
         cached_result = _get_from_cache(cache_key)
         if cached_result:
-            print(f"  ✓ Using cached related keywords for '{seed_keyword}'")
+            print(f"  [OK] Using cached related keywords for '{seed_keyword}'")
             return cached_result
     
     # Make API request
@@ -257,32 +257,32 @@ def get_related_keywords(seed_keyword: str,
     
     # Check for errors
     if response.get("status_code") != 20000:
-        print(f"❌ API Error: {response.get('status_message', 'Unknown error')}")
+        print(f"[ERROR] API Error: {response.get('status_message', 'Unknown error')}")
         return []
     
     # Extract items from response
     try:
         if "tasks" not in response or not response["tasks"]:
-            print(f"❌ No tasks in response")
+            print(f"[ERROR] No tasks in response")
             return []
             
         task_result = response["tasks"][0]
         if task_result.get("status_code") != 20000:
-            print(f"❌ Task error: {task_result.get('status_message', 'Unknown error')}")
+            print(f"[ERROR] Task error: {task_result.get('status_message', 'Unknown error')}")
             return []
         
         if "result" not in task_result or not task_result["result"]:
-            print(f"❌ No result in task")
+            print(f"[ERROR] No result in task")
             return []
             
         items = task_result["result"][0].get("items", [])
         
         if not items:
-            print(f"  ⚠️  No related keywords found")
+            print(f"  [WARNING]  No related keywords found")
             return []
             
     except (IndexError, KeyError) as e:
-        print(f"❌ Error parsing response: {e}")
+        print(f"[ERROR] Error parsing response: {e}")
         return []
     
     # Flatten nested structure and extract data
@@ -373,7 +373,7 @@ def basic_keyword_brief(seed_keyword: str,
         )
         
         if related:
-            print(f"  ✓ Found {len(related)} related keywords")
+            print(f"  [OK] Found {len(related)} related keywords")
             # Merge and dedupe
             seen_keywords = {kw["keyword"].lower() for kw in all_keywords}
             for kw in related:
@@ -384,7 +384,7 @@ def basic_keyword_brief(seed_keyword: str,
     # ZERO-VOLUME / LOW DATA HANDLING
     # If we have very few keywords or no data, signal AI to take over
     if not all_keywords or len(all_keywords) < 3:
-        print("  ⚠️  Low/No data found. Signaling AI to use Semantic Mode.")
+        print("  [WARNING]  Low/No data found. Signaling AI to use Semantic Mode.")
         return {
             "seed": seed_keyword,
             "manual_mode": True,  # SIGNAL FOR AI AGENT
@@ -397,7 +397,7 @@ def basic_keyword_brief(seed_keyword: str,
             "all_suggestions": []
         }
     
-    print(f"  ✓ Total unique keywords: {len(all_keywords)}")
+    print(f"  [OK] Total unique keywords: {len(all_keywords)}")
     
     # Sort by search volume (highest first)
     suggestions_sorted = sorted(
@@ -430,7 +430,7 @@ def basic_keyword_brief(seed_keyword: str,
     if main is None:
         main = suggestions_sorted[0]
     
-    print(f"  ✓ Main keyword: '{main['keyword']}' ({main['search_volume']} vol, ${(main['cpc'] or 0):.2f} CPC, intent: {main.get('search_intent', 'unknown')})")
+    print(f"  [OK] Main keyword: '{main['keyword']}' ({main['search_volume']} vol, ${(main['cpc'] or 0):.2f} CPC, intent: {main.get('search_intent', 'unknown')})")
     
     # SECONDARY KEYWORDS: next 5 highest-volume suggestions
     secondary_candidates = [
@@ -439,12 +439,12 @@ def basic_keyword_brief(seed_keyword: str,
     ]
     secondary = secondary_candidates[:5]
     
-    print(f"  ✓ Secondary keywords: {len(secondary)}")
+    print(f"  [OK] Secondary keywords: {len(secondary)}")
     
     # LONG-TAIL KEYWORDS: remaining suggestions (limit to 10)
     long_tail = secondary_candidates[5:15]
     
-    print(f"  ✓ Long-tail keywords: {len(long_tail)}")
+    print(f"  [OK] Long-tail keywords: {len(long_tail)}")
     
     # INTENT BREAKDOWN: Analyze search intent across all keywords
     intent_counts = {"informational": 0, "commercial": 0, "transactional": 0, "navigational": 0, "unknown": 0}
@@ -455,7 +455,7 @@ def basic_keyword_brief(seed_keyword: str,
         else:
             intent_counts["unknown"] += 1
     
-    print(f"  ✓ Intent breakdown: {', '.join(f'{k}: {v}' for k, v in intent_counts.items() if v > 0)}")
+    print(f"  [OK] Intent breakdown: {', '.join(f'{k}: {v}' for k, v in intent_counts.items() if v > 0)}")
     
     return {
         "seed": seed_keyword,
@@ -494,7 +494,7 @@ def basic_keyword_brief(seed_keyword: str,
     if main is None:
         main = suggestions_sorted[0]
     
-    print(f"  ✓ Main keyword: '{main['keyword']}' ({main['search_volume']} vol, ${(main['cpc'] or 0):.2f} CPC, intent: {main.get('search_intent', 'unknown')})")
+    print(f"  [OK] Main keyword: '{main['keyword']}' ({main['search_volume']} vol, ${(main['cpc'] or 0):.2f} CPC, intent: {main.get('search_intent', 'unknown')})")
     
     # SECONDARY KEYWORDS: next 5 highest-volume suggestions
     secondary_candidates = [
@@ -503,12 +503,12 @@ def basic_keyword_brief(seed_keyword: str,
     ]
     secondary = secondary_candidates[:5]
     
-    print(f"  ✓ Secondary keywords: {len(secondary)}")
+    print(f"  [OK] Secondary keywords: {len(secondary)}")
     
     # LONG-TAIL KEYWORDS: remaining suggestions (limit to 10)
     long_tail = secondary_candidates[5:15]
     
-    print(f"  ✓ Long-tail keywords: {len(long_tail)}")
+    print(f"  [OK] Long-tail keywords: {len(long_tail)}")
     
     # INTENT BREAKDOWN: Analyze search intent across all keywords
     intent_counts = {"informational": 0, "commercial": 0, "transactional": 0, "navigational": 0, "unknown": 0}
@@ -519,7 +519,7 @@ def basic_keyword_brief(seed_keyword: str,
         else:
             intent_counts["unknown"] += 1
     
-    print(f"  ✓ Intent breakdown: {', '.join(f'{k}: {v}' for k, v in intent_counts.items() if v > 0)}")
+    print(f"  [OK] Intent breakdown: {', '.join(f'{k}: {v}' for k, v in intent_counts.items() if v > 0)}")
     
     return {
         "seed": seed_keyword,
@@ -564,18 +564,18 @@ if __name__ == "__main__":
         print("\n" + "="*70)
         print("KEYWORD BRIEF")
         print("="*70)
-        print(f"\n🎯 Main Keyword: {result['main_keyword']}")
+        print(f"\n[TARGET] Main Keyword: {result['main_keyword']}")
         if result['main_keyword_data']:
             data = result['main_keyword_data']
             print(f"   Volume: {data['search_volume']}")
             print(f"   CPC: ${(data['cpc'] or 0):.2f}")
             print(f"   Difficulty: {data['difficulty']}/100")
         
-        print(f"\n📌 Secondary Keywords ({len(result['secondary_keywords'])}):")
+        print(f"\n[SECONDARY] Secondary Keywords ({len(result['secondary_keywords'])}):")
         for kw in result['secondary_keywords']:
             print(f"   - {kw}")
         
-        print(f"\n📝 Long-tail Keywords ({len(result['long_tail_keywords'])}):")
+        print(f"\n[LONG-TAIL] Long-tail Keywords ({len(result['long_tail_keywords'])}):")
         for kw in result['long_tail_keywords'][:5]:  # Show first 5
             print(f"   - {kw}")
         if len(result['long_tail_keywords']) > 5:
@@ -591,7 +591,7 @@ if __name__ == "__main__":
         if args.output:
             with open(args.output, 'w', encoding='utf-8') as f:
                 json.dump(result, f, indent=2)
-            print(f"\n💾 Full results saved to: {args.output}")
+            print(f"\n[SAVED] Full results saved to: {args.output}")
     
     elif args.command == "suggestions":
         suggestions = get_keyword_suggestions(
@@ -616,4 +616,4 @@ if __name__ == "__main__":
         if args.output:
             with open(args.output, 'w', encoding='utf-8') as f:
                 json.dump(suggestions, f, indent=2)
-            print(f"\n💾 Results saved to: {args.output}")
+            print(f"\n[SAVED] Results saved to: {args.output}")

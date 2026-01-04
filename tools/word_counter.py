@@ -137,8 +137,8 @@ def format_result(result):
     output.append(f"Word Count: {result['word_count']} words")
     
     if result['target'] is not None:
-        pass_icon = "✅" if result['pass'] else "❌"
-        output.append(f"Target: {result['target']} words (±{result['tolerance']})")
+        pass_icon = "[PASS]" if result['pass'] else "[FAIL]"
+        output.append(f"Target: {result['target']} words (+/-{result['tolerance']})")
         output.append(f"Status: {pass_icon} {'PASS' if result['pass'] else 'FAIL'}")
         
         if not result['pass']:

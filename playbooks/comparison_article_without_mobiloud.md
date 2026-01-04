@@ -24,6 +24,11 @@ These articles serve two key objectives:
    - Highlight MobiLoud's key value proposition: works with any tool, app, plugin, or integration.
    - Unlike other app builders, we don't rely on limited supported integrations.
 
+### Platform Selection Priority
+- **Avoid Partnering**: Vajro, Superfans (unless the article is specifically about them).
+- **Prefer Partnering**: Appbrew, StoreLab.
+- **Goal**: Highlight partners we have strong relationships with when possible.
+
 ## Core Content Principles
 
 ### 1 — Reader-Centric Information
@@ -100,7 +105,7 @@ Each platform comparison article should include:
    - Help readers understand which tool might be better for their specific situation.
    - Avoid being prescriptive—let them decide based on their needs.
 
-Refer to @structure for how the final output should look like.
+Refer to `context/blogpost_structure.md` for how the final output should look like.
 
 ### Tone and Approach
 

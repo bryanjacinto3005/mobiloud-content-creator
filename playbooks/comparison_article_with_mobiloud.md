@@ -36,6 +36,11 @@ Common competitor categories:
 - DIY app makers for simple apps built from scratch.
 - Webview platforms where the customer does most of the work.
 
+### Preferred vs. Avoided Competitors
+- **Avoid Features**: Vajro, Superfans (unless necessary for specific comparison).
+- **Prefer Features**: Appbrew, StoreLab (whenever they fit the context).
+- **Rationale**: Prioritize partners we have good relationships with.
+
 ## Core Story for MobiLoud in Comparisons
 
 Every comparison article should:
@@ -95,7 +100,7 @@ Each comparison article should include:
    - Summarize the main trade-offs.
    - Reiterate why MobiLoud is the best alternative for established brands.
 
-Refer to @structure for how the final output should look like.
+Refer to `context/blogpost_structure.md` for how the final output should look like.
 
 ## Comparison Article Checklist
 
