@@ -170,22 +170,30 @@ These create a “why it works” feel across any topic:
 - risk and failure modes
 - skill/ownership requirements
 
-## 7. Micro-Playbook Requirement
+## 7. Actionable Guidance Requirement
 
-Each major section should include an action block that converts ideas into next steps.
+Each major section must conclude with practical, immediately applicable guidance. Do NOT use template headings like "How to apply this" or labeled sections like "Do:", "Avoid:", "Measure:".
 
-**Required format**
-> **How to apply this**
->
-> **Do:** ___
->
-> **Avoid:** ___
->
-> **Measure:** ___
->
-> **If constrained by ___:** ___
+**MUST include (woven naturally into prose)**
+- A clear directive or recommended action (what to do)
+- What to avoid or common pitfalls
+- How to measure success or validate the approach
+- Context-sensitive guidance for constrained scenarios (bandwidth, budget, resources, timeline, etc.)
 
-This keeps the voice practical regardless of topic.
+**Structure approach**
+- Write this as flowing, practical prose or concise bullet points
+- Lead with the action or decision criteria
+- Follow with the tradeoff or constraint guidance
+- Close with measurement or validation steps
+
+**Example of natural integration:**
+> Pick a builder based on who will manage the app long-term. If your team maintains content weekly, choose a platform with strong CMS integration. If bandwidth is limited, prioritize managed services.
+>
+> Avoid underestimating the ongoing content and campaign work required.
+>
+> Track time to launch and weekly app maintenance hours to validate your choice.
+
+This keeps every section practical and actionable without forced formatting.
 
 ## 8. “Sound Rules” (What It Should Feel Like)
 
@@ -208,26 +216,20 @@ This keeps the voice practical regardless of topic.
 - Feature dumping without payoff or prioritization
 - Conclusions that don’t give a next step
 
-## 10. Minimal Output Examples (for calibration only)
+## 10. Structural Patterns (for calibration only)
 
-These examples are not “pick-a-phrase.” They show what the rules produce.
+These demonstrate how the rules combine into natural prose. Do NOT copy the structure literally. Extract the **approach**, not the labels.
 
-**Example A: Pivot + mechanism + payoff**
-> **Problem:** “Web sessions are temporary.”
->
-> **Pivot:** “But here’s the problem.”
->
-> **Mechanism:** “You have to win attention again every time.”
->
-> **Payoff:** “That increases acquisition pressure and slows repeat revenue.”
+**Pattern A: Problem → Pivot → Mechanism → Payoff**
 
-**Example B: Micro-playbook block**
-> **How to apply this**
->
-> **Do:** reduce steps in the critical flow
->
-> **Avoid:** adding options that increase hesitation
->
-> **Measure:** completion rate and time-to-complete
->
-> **If constrained by dev time:** fix the single highest-drop-off step first
+State the problem plainly. Use a crisp transition to shift focus. Explain the underlying mechanism (the "why"). Close with the concrete impact or tradeoff.
+
+> Web sessions are temporary. But here's the problem. You have to win attention again every time. That increases acquisition pressure and slows repeat revenue.
+
+**Pattern B: Actionable guidance integration**
+
+Provide directive advice, followed by what to avoid, then measurement criteria, and constraint-based refinement. Write this as **flowing prose**, not a labeled template.
+
+> Reduce steps in the critical flow to improve completion rates. Avoid adding options that increase hesitation. Track completion rate and time-to-complete. If constrained by dev time, fix the single highest-drop-off step first.
+
+**Key principle:** The structure should be **invisible** to the reader. They should feel guided and informed, not like they're reading a form or checklist.

@@ -136,7 +136,7 @@ Draft a header-based outline (H2/H3) that aligns with your selected `structure` 
 **Step 3.2: Write the Content**
 Write the full article in Markdown.
 - **Frontmatter**: Include `Meta Title`, `Meta Description`, `URL Slug` at the top.
-- **Key Takeaways**: Write a pure paragraph (no bullets) immediately after H1.
+- **Key Takeaways** (if included in the structure file): Write a pure paragraph (no bullets) immediately after H1.
 - **Link Integration**: Embed links naturally in the sentence flow. DO NOT use "Read more here" or "Click here".
 - **Density**: Use Main Keyword in H1 + First 100 words. Use Secondary Keywords naturally in H2s.
 - **FAQs**: Add an `## FAQs` section at the end. NO links in FAQs.
