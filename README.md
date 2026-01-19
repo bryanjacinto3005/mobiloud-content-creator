@@ -2,10 +2,6 @@
 
 A workspace designed to leverage the **agentic nature of AI** within the Cursor platform. By feeding the AI specific context, accurate brand messaging, and live research tools, we effectively bypass the limitations of generic LLM interfaces like ChatGPT or Gemini.
 
-## Purpose
-
-To achieve superior accuracy and brand alignment through context. This repository provides a dedicated environment where the AI has direct access to MobiLoud's specific definitions, voice, and guidelines. This allows it to operate not just as a text generator, but as a knowledgeable partner. The result is a workflow that offers significantly better results than web clients, all within a user-friendly, professional editing space in the IDE.
-
 ## Setup Guide
 
 Before you can use the AI agents, you need to configure the local environment with the necessary API keys.
