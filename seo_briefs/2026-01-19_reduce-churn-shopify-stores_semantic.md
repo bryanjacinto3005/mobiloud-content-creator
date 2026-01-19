@@ -4,7 +4,7 @@
 > **Date**: 2026-01-19
  
 ## Core Keyword Strategy
-- **Main Keyword**: reduce churn for Shopify stores
+- **Main Keyword**: how to reduce churn
 - **User Intent**: Informational with commercial evaluation
 - **Vertical/Niche**: Shopify ecommerce retention
  
